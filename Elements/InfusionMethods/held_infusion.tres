@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HeldInfusion" format=3 uid="uid://ddavwg0tbc7hu"]
+
+[ext_resource type="Script" uid="uid://ctweoo0x8p4wt" path="res://Elements/InfusionMethods/held_infusion.gd" id="1_sxjaf"]
+
+[resource]
+script = ExtResource("1_sxjaf")
+metadata/_custom_type_script = "uid://ctweoo0x8p4wt"

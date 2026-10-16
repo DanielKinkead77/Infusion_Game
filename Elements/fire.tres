@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ElementData" format=3 uid="uid://cqitj4erlp3av"]
+
+[ext_resource type="Script" uid="uid://cnb8h0yey1tuj" path="res://Elements/Effects/effect_data.gd" id="1_b1b1g"]
+[ext_resource type="Script" uid="uid://1rh3f8g5431j" path="res://Elements/Effects/effect_burn.gd" id="2_w330q"]
+[ext_resource type="Script" uid="uid://d3t7cxqijs6e4" path="res://Elements/element_data.gd" id="2_yjlp5"]
+[ext_resource type="Script" uid="uid://bre360fxtkqk7" path="res://Elements/InfusionMethods/infusion_method.gd" id="3_w330q"]
+[ext_resource type="Resource" uid="uid://ddavwg0tbc7hu" path="res://Elements/InfusionMethods/held_infusion.tres" id="5_k6gwl"]
+
+[sub_resource type="Resource" id="Resource_me5bc"]
+script = ExtResource("2_w330q")
+duration = 4.0
+metadata/_custom_type_script = "uid://1rh3f8g5431j"
+
+[resource]
+script = ExtResource("2_yjlp5")
+element_name = "Fire"
+color = Color(0.64503753, 0.101523094, 0.10555915, 1)
+effects = Array[ExtResource("1_b1b1g")]([SubResource("Resource_me5bc")])
+supported_methods = Array[ExtResource("3_w330q")]([ExtResource("5_k6gwl")])
+metadata/_custom_type_script = "uid://d3t7cxqijs6e4"

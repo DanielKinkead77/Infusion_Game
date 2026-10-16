@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cg4gbf3vljojm" path="res://Player/player.gd" id="1_vyvq2"]
 [ext_resource type="Script" uid="uid://dwjq1ls13u7rx" path="res://Player/throw_hand.gd" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://cr0d5i3n1k6xj" path="res://Player/infuser.gd" id="3_od3ui"]
+[ext_resource type="Script" uid="uid://d3t7cxqijs6e4" path="res://Elements/element_data.gd" id="4_00tjw"]
+[ext_resource type="Resource" uid="uid://cqitj4erlp3av" path="res://Elements/fire.tres" id="5_x3vf3"]
+[ext_resource type="Resource" uid="uid://miekhta1umeb" path="res://Elements/ice.tres" id="6_apopc"]
+[ext_resource type="Script" uid="uid://bre360fxtkqk7" path="res://Elements/InfusionMethods/infusion_method.gd" id="7_5htga"]
+[ext_resource type="Resource" uid="uid://ddavwg0tbc7hu" path="res://Elements/InfusionMethods/held_infusion.tres" id="8_p5o4e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj4t2"]
 radius = 0.4
@@ -58,3 +64,9 @@ custom_minimum_size = Vector2(4, 4)
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Infuser" type="Node" parent="." unique_id=2115576783 node_paths=PackedStringArray("throw_hand")]
+script = ExtResource("3_od3ui")
+throw_hand = NodePath("../Throw Hand")
+unlocked_elements = Array[ExtResource("4_00tjw")]([ExtResource("5_x3vf3"), ExtResource("6_apopc")])
+unlocked_methods = Array[ExtResource("7_5htga")]([ExtResource("8_p5o4e")])

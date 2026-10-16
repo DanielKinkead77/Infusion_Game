@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bov41je475xji"]
 
 [ext_resource type="Script" uid="uid://cy2pfxnpq6aqu" path="res://Throwables/throwable.gd" id="1_pb4p3"]
+[ext_resource type="Script" uid="uid://barxm731ghveo" path="res://Components/infusable.gd" id="2_8noic"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clur5"]
 albedo_color = Color(0.43112308, 0.4330846, 0.42796496, 1)
@@ -13,14 +14,19 @@ height = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_bj4t2"]
 radius = 0.15
 
-[node name="rock" type="RigidBody3D" unique_id=776994072]
+[node name="rock" type="RigidBody3D" unique_id=776994072 node_paths=PackedStringArray("infusable")]
 collision_layer = 8
 collision_mask = 15
 continuous_cd = true
 script = ExtResource("1_pb4p3")
+infusable = NodePath("Infusable")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1184908046]
 mesh = SubResource("SphereMesh_mqvok")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=701338225]
 shape = SubResource("SphereShape3D_bj4t2")
+
+[node name="Infusable" type="Node" parent="." unique_id=2119013602 node_paths=PackedStringArray("mesh")]
+script = ExtResource("2_8noic")
+mesh = NodePath("../MeshInstance3D")

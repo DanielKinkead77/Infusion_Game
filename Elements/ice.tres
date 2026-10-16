@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ElementData" format=3 uid="uid://miekhta1umeb"]
+
+[ext_resource type="Script" uid="uid://cnb8h0yey1tuj" path="res://Elements/Effects/effect_data.gd" id="1_d7pgs"]
+[ext_resource type="Script" uid="uid://c0bn72ggoxl2b" path="res://Elements/Effects/effect_freeze.gd" id="2_66gnf"]
+[ext_resource type="Script" uid="uid://d3t7cxqijs6e4" path="res://Elements/element_data.gd" id="2_s3vol"]
+[ext_resource type="Script" uid="uid://bre360fxtkqk7" path="res://Elements/InfusionMethods/infusion_method.gd" id="3_66gnf"]
+[ext_resource type="Resource" uid="uid://ddavwg0tbc7hu" path="res://Elements/InfusionMethods/held_infusion.tres" id="5_bhdsu"]
+
+[sub_resource type="Resource" id="Resource_ri2pa"]
+script = ExtResource("2_66gnf")
+duration = 4.0
+metadata/_custom_type_script = "uid://c0bn72ggoxl2b"
+
+[resource]
+script = ExtResource("2_s3vol")
+color = Color(0.53059584, 0.8467427, 0.9999998, 1)
+effects = Array[ExtResource("1_d7pgs")]([SubResource("Resource_ri2pa")])
+supported_methods = Array[ExtResource("3_66gnf")]([ExtResource("5_bhdsu")])
+metadata/_custom_type_script = "uid://d3t7cxqijs6e4"
