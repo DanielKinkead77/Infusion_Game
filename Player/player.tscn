@@ -7,16 +7,16 @@
 radius = 0.4
 height = 1.8
 
-[node name="Node3D" type="Node3D" unique_id=2061133851]
-
-[node name="Player" type="CharacterBody3D" parent="." unique_id=2085174782]
+[node name="Player" type="CharacterBody3D" unique_id=2085174782]
+collision_layer = 2
+collision_mask = 69
 script = ExtResource("1_vyvq2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1161808289]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1161808289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_bj4t2")
 
-[node name="Throw Hand" type="Node" parent="Player" unique_id=772554169 node_paths=PackedStringArray("player", "camera", "hold_point", "interact_ray", "aim_ray")]
+[node name="Throw Hand" type="Node" parent="." unique_id=772554169 node_paths=PackedStringArray("player", "camera", "hold_point", "interact_ray", "aim_ray")]
 script = ExtResource("2_4ntmi")
 player = NodePath("..")
 camera = NodePath("../Head/Camera3D")
@@ -26,23 +26,26 @@ aim_ray = NodePath("../Head/Camera3D/AimRay")
 max_look_sway = 0.36
 sway_return_speed = 6.0
 
-[node name="Head" type="Node3D" parent="Player" unique_id=1718349394]
+[node name="Head" type="Node3D" parent="." unique_id=1718349394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=323058757]
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=323058757]
 
-[node name="InteractRay" type="RayCast3D" parent="Player/Head/Camera3D" unique_id=798152408]
+[node name="InteractRay" type="RayCast3D" parent="Head/Camera3D" unique_id=798152408]
 target_position = Vector3(0, 0, -2.5)
+collision_mask = 9
 
-[node name="AimRay" type="RayCast3D" parent="Player/Head/Camera3D" unique_id=1107362496]
+[node name="AimRay" type="RayCast3D" parent="Head/Camera3D" unique_id=1107362496]
 target_position = Vector3(0, 0, -100)
+collision_mask = 29
 
-[node name="HoldPoint" type="Marker3D" parent="Player/Head/Camera3D" unique_id=634704300]
+[node name="HoldPoint" type="Marker3D" parent="Head/Camera3D" unique_id=634704300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.3, -0.6)
+gizmo_extents = 0.5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1423828143]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1423828143]
 
-[node name="CenterContainer" type="CenterContainer" parent="Player/CanvasLayer" unique_id=773393180]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=773393180]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player/CanvasLayer/CenterContainer" unique_id=115577602]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CenterContainer" unique_id=115577602]
 custom_minimum_size = Vector2(4, 4)
 layout_mode = 2
 mouse_filter = 2

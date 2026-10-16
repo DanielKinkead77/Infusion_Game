@@ -33,6 +33,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+	
 	if event is InputEventMouseMotion and held_item != null:
 		look_sway += event.relative * look_sway_amount
 		look_sway = look_sway.limit_length(max_look_sway)

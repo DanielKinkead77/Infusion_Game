@@ -1,8 +1,14 @@
 class_name ElementData
-extends Node
+extends Resource
 
 @export var element_name: String = ""
-@export var colour: Color = color.WHITE
-@export var effect_duration: float = 3.0
-@export var damage_per_second
-@export
+@export var color: Color = Color.WHITE
+@export var effects: Array[EffectData] = []
+@export var supported_methods: Array[InfusionMethod] = []
+
+
+func supports(method: InfusionMethod) -> bool:
+	for m: InfusionMethod in supported_methods:
+		if m.get_script() == method.get_script():
+			return true
+	return false
