@@ -2,7 +2,7 @@ class_name ElementData
 extends Resource
 
 @export var element_name: String = ""
-@export var color: Color = Color.WHITE
+@export var colour: Color = Color.WHITE
 @export var effects: Array[EffectData] = []
 @export var supported_methods: Array[InfusionMethod] = []
 
