@@ -6,12 +6,12 @@ signal element_selected(element: ElementData)
 @export var throw_hand: ThrowHand
 @export var unlocked_elements: Array[ElementData] = []
 @export var unlocked_methods: Array[InfusionMethod] = []
-@export var hold_to_infuse_time: float = 0.4
+@export var hold_to_infuse_time: float = .7
 
 var slot_actions: Array[String] = ["element_1", "element_2"]
 var selected_index: int = 0
 var active_method_index: int = 0
-var held_slot: int = -1
+var is_holding_infuse: bool = false
 var hold_time: float = 0.0
 var infused_this_press: bool = false
 
@@ -23,14 +23,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	for i: int in slot_actions.size():
 		if event.is_action_pressed(slot_actions[i]):
 			select(i)
-			held_slot = i
-			hold_time = 0.0
-			infused_this_press = false
-		elif event.is_action_released(slot_actions[i]) and held_slot == i:
-			held_slot = -1
 
+	if event.is_action_pressed("infuse"):
+		is_holding_infuse = true
+		hold_time = 0.0
+		infused_this_press = false
+	elif event.is_action_released("infuse"):
+		is_holding_infuse = false
 func _process(delta: float) -> void:
-	if held_slot == -1 or infused_this_press:
+	if not is_holding_infuse or infused_this_press:
 		return
 	hold_time += delta
 	if hold_time >= hold_to_infuse_time:

@@ -13,7 +13,8 @@ metadata/_custom_type_script = "uid://c0bn72ggoxl2b"
 
 [resource]
 script = ExtResource("2_s3vol")
-color = Color(0.53059584, 0.8467427, 0.9999998, 1)
+element_name = "Ice"
+color = Color(0.31424084, 0.5661187, 1, 1)
 effects = Array[ExtResource("1_d7pgs")]([SubResource("Resource_ri2pa")])
 supported_methods = Array[ExtResource("3_66gnf")]([ExtResource("5_bhdsu")])
 metadata/_custom_type_script = "uid://d3t7cxqijs6e4"
