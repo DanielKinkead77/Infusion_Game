@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cfecgtyyay0k"]
+
+[ext_resource type="PackedScene" uid="uid://cck6hdm23goax" path="res://Player/player.tscn" id="1_ormqy"]
+[ext_resource type="PackedScene" uid="uid://bov41je475xji" path="res://Throwables/item_rock.tscn" id="2_00vsl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gbj0n"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ormqy"]
+sky_material = SubResource("ProceduralSkyMaterial_gbj0n")
+
+[sub_resource type="Environment" id="Environment_00vsl"]
+background_mode = 2
+sky = SubResource("Sky_ormqy")
+glow_enabled = true
+
+[node name="TestLevel" type="Node3D" unique_id=1943109932]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1624629220]
+environment = SubResource("Environment_00vsl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2012029824]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="CSGBox3D" parent="." unique_id=823759565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="block" type="CSGBox3D" parent="." unique_id=1839198380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5738993, 1.7699481, -1.3187695)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="block2" type="CSGBox3D" parent="." unique_id=1997686343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3070545, 1.5693008, -9.228538)
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="Player_Character" parent="." unique_id=2061133851 instance=ExtResource("1_ormqy")]
+
+[node name="rock" parent="." unique_id=776994072 instance=ExtResource("2_00vsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+
+[node name="rock2" parent="." unique_id=218149053 instance=ExtResource("2_00vsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 15, -5)
