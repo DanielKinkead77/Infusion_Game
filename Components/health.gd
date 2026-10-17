@@ -12,7 +12,9 @@ var current_health: float = 0.0
 
 func _ready() -> void:
 	current_health = max_health
-
+	
+func reset() -> void:
+	current_health = max_health
 
 func take_damage(amount: float, type: Damage.Type) -> void:
 	if is_dead():

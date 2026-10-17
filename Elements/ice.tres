@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="ElementData" format=3 uid="uid://miekhta1umeb"]
 
 [ext_resource type="Script" uid="uid://cnb8h0yey1tuj" path="res://Elements/Effects/effect_data.gd" id="1_d7pgs"]
-[ext_resource type="Script" uid="uid://c0bn72ggoxl2b" path="res://Elements/Effects/effect_freeze.gd" id="2_66gnf"]
+[ext_resource type="Script" uid="uid://woprrk4bxeuq" path="res://Elements/Effects/effect_slow.gd" id="2_66gnf"]
 [ext_resource type="Script" uid="uid://d3t7cxqijs6e4" path="res://Elements/element_data.gd" id="2_s3vol"]
 [ext_resource type="Script" uid="uid://bre360fxtkqk7" path="res://Elements/InfusionMethods/infusion_method.gd" id="3_66gnf"]
 [ext_resource type="Resource" uid="uid://ddavwg0tbc7hu" path="res://Elements/InfusionMethods/held_infusion.tres" id="5_bhdsu"]
 
-[sub_resource type="Resource" id="Resource_ri2pa"]
+[sub_resource type="Resource" id="Resource_xhudq"]
 script = ExtResource("2_66gnf")
 duration = 4.0
-metadata/_custom_type_script = "uid://c0bn72ggoxl2b"
+metadata/_custom_type_script = "uid://woprrk4bxeuq"
 
 [resource]
 script = ExtResource("2_s3vol")
@@ -17,6 +17,6 @@ element_name = "Ice"
 color = Color(0.31424084, 0.5661187, 1, 1)
 damage_type = 2
 impact_damage_bonus = 3.0
-effects = Array[ExtResource("1_d7pgs")]([SubResource("Resource_ri2pa")])
+effects = Array[ExtResource("1_d7pgs")]([SubResource("Resource_xhudq")])
 supported_methods = Array[ExtResource("3_66gnf")]([ExtResource("5_bhdsu")])
 metadata/_custom_type_script = "uid://d3t7cxqijs6e4"

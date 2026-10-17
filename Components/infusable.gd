@@ -46,10 +46,11 @@ func resume_timer() -> void:
 func on_impact(target: Node) -> void:
 	if element == null:
 		return
-	var health: Health = Health.find_on(target)
-	if health != null and element.impact_damage_bonus > 0.0:
-		health.take_damage(element.impact_damage_bonus, element.damage_type)
-	# Later: gather impact rules here; ongoing effects go to StatusEffects (1.7)
-	for effect: EffectData in element.effects:
-		print("%s hit %s: %s" % [element.element_name, target.name, effect.get_script().get_global_name()])
+	var hitbox: Hitbox = Hitbox.find_on(target)
+	if hitbox != null:
+		if element.impact_damage_bonus > 0.0:
+			hitbox.take_hit(element.impact_damage_bonus, element.damage_type)
+		for effect: EffectData in element.effects:
+			hitbox.apply_effect(effect)
+	# Later: impact rules (linger, slide...) gathered here
 	clear()

@@ -33,9 +33,9 @@ func _on_body_entered(body: Node) -> void:
 	if not is_thrown:
 		return
 	is_thrown = false
-	var health: Health = Health.find_on(body)
-	if health != null:
+	var hitbox: Hitbox = Hitbox.find_on(body)
+	if hitbox != null:
 		var damage: float = impact_damage * lerpf(0.5, 1.0, throw_power)
-		health.take_damage(damage, Damage.Type.PHYSICAL)
+		hitbox.take_hit(damage, Damage.Type.PHYSICAL)
 	if infusable != null:
 		infusable.on_impact(body)

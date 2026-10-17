@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://djyoqh2fx46n0"]
+
+[ext_resource type="Script" uid="uid://dyebtlbllv1xe" path="res://Enemies/dummy.gd" id="1_oq4ip"]
+[ext_resource type="Script" uid="uid://c0rcrk1mpcgb" path="res://Components/hitbox.gd" id="1_qawet"]
+[ext_resource type="Script" uid="uid://xwcsyfpt2k08" path="res://Components/health.gd" id="2_oq4ip"]
+[ext_resource type="Script" uid="uid://cdlm88sd4m4fb" path="res://Elements/resistance.gd" id="3_t3gwh"]
+[ext_resource type="Script" uid="uid://ctyoc5oxswtsc" path="res://Components/status_effects.gd" id="4_4geh5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj4t2"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mqvok"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0h62n"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_jj85x"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Resource" id="Resource_fkkvc"]
+script = ExtResource("3_t3gwh")
+type = 1
+multiplier = 0.5
+metadata/_custom_type_script = "uid://cdlm88sd4m4fb"
+
+[node name="Dummy" type="CharacterBody3D" unique_id=1252503978 node_paths=PackedStringArray("health", "status_effects", "body_mesh", "head_mesh", "head_body", "hp_label")]
+collision_layer = 4
+script = ExtResource("1_oq4ip")
+health = NodePath("Health")
+status_effects = NodePath("StatusEffects")
+body_mesh = NodePath("BodyMesh")
+head_mesh = NodePath("Head/HeadMesh")
+head_body = NodePath("Head")
+hp_label = NodePath("Label3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1142262049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_bj4t2")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="." unique_id=870403248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_mqvok")
+
+[node name="Head" type="AnimatableBody3D" parent="." unique_id=294106586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05, 0)
+collision_layer = 4
+collision_mask = 0
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head" unique_id=962874980]
+shape = SubResource("SphereShape3D_0h62n")
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=2128376407]
+mesh = SubResource("SphereMesh_jj85x")
+
+[node name="Hitbox" type="Node" parent="Head" unique_id=1754099272 node_paths=PackedStringArray("health", "status_effects")]
+script = ExtResource("1_qawet")
+health = NodePath("../../Health")
+status_effects = NodePath("../../StatusEffects")
+damage_multiplier = 2.0
+metadata/_custom_type_script = "uid://c0rcrk1mpcgb"
+
+[node name="Hitbox" type="Node" parent="." unique_id=1485308274 node_paths=PackedStringArray("health", "status_effects")]
+script = ExtResource("1_qawet")
+health = NodePath("../Health")
+status_effects = NodePath("../StatusEffects")
+metadata/_custom_type_script = "uid://c0rcrk1mpcgb"
+
+[node name="Health" type="Node" parent="." unique_id=1047153275]
+script = ExtResource("2_oq4ip")
+resistances = Array[ExtResource("3_t3gwh")]([SubResource("Resource_fkkvc")])
+metadata/_custom_type_script = "uid://xwcsyfpt2k08"
+
+[node name="StatusEffects" type="Node" parent="." unique_id=1548930295]
+script = ExtResource("4_4geh5")
+metadata/_custom_type_script = "uid://ctyoc5oxswtsc"
+
+[node name="Label3D" type="Label3D" parent="." unique_id=294323836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+billboard = 1
