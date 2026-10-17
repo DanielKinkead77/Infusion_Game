@@ -94,13 +94,13 @@ func throw() -> void:
 
 	var item: Throwable = held_item
 	clear_hand()
-	item.release(direction * force, player)
+	item.release(direction * force, player, charge_amount)
 
 
 func drop() -> void:
 	var item: Throwable = held_item
 	clear_hand()
-	item.release(Vector3.ZERO, player)
+	item.release(Vector3.ZERO, player, 0.0)
 
 
 func clear_hand() -> void:

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://csh21catomwe5"]
+
+[ext_resource type="Script" uid="uid://cmfy6tceqr730" path="res://Enemies/Targets/test_target.gd" id="1_ucrke"]
+[ext_resource type="Script" uid="uid://xwcsyfpt2k08" path="res://Components/health.gd" id="1_ypmq5"]
+[ext_resource type="Script" uid="uid://cdlm88sd4m4fb" path="res://Elements/resistance.gd" id="3_ae0k5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj4t2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bj4t2"]
+
+[sub_resource type="Resource" id="Resource_ucrke"]
+script = ExtResource("3_ae0k5")
+type = 1
+multiplier = 0.5
+metadata/_custom_type_script = "uid://cdlm88sd4m4fb"
+
+[node name="test_target" type="StaticBody3D" unique_id=138067538 node_paths=PackedStringArray("health")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ucrke")
+health = NodePath("Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=156578448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bj4t2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=285882182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_bj4t2")
+
+[node name="Health" type="Node" parent="." unique_id=1485382134]
+script = ExtResource("1_ypmq5")
+resistances = Array[ExtResource("3_ae0k5")]([SubResource("Resource_ucrke")])
+metadata/_custom_type_script = "uid://xwcsyfpt2k08"
